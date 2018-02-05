@@ -40,27 +40,27 @@ Plan my gem. Decide how the interface will work.
         
 **A command line interface for current top 200 podcasts**
 
-	User types top_podcasts
+User types top_podcasts
 
-	User is welcomed to the top podcasts gem.
-	User is asked to enter a range of ten numbers, i.e. 1-10, 11-20, etc.
-	Once user enters the numbers a list of ten podcasts are shown, sorted by rank
+User is welcomed to the top podcasts gem.
+User is asked to enter a range of ten numbers, i.e. 1-10, 11-20, etc.
+Once user enters the numbers a list of ten podcasts are shown, sorted by rank
 
-	1. Rank, Podcast
-	2. Rank, Podcast
-	3. Rank, Podcast
-	4. Rank, Podcast
-	5. Rank, Podcast
-	6. Rank, Podcast
-	7. Rank, Podcast
-	8. Rank, Podcast
-	9. Rank, Podcast
-	10. Rank, Podcast
+1. Rank, Podcast
+2. Rank, Podcast
+3. Rank, Podcast
+4. Rank, Podcast
+5. Rank, Podcast
+6. Rank, Podcast
+7. Rank, Podcast
+8. Rank, Podcast
+9. Rank, Podcast
+10. Rank, Podcast
 
 
 Which podcast do you want to know more about?
 
-	“1”
+“1”
 
 User enters the number of the podcast he/she is interested in.
 
@@ -73,6 +73,7 @@ User types Y or N
 If Y then the process starts over.
 
 If X then the user is given a goodby message.
+
 		
 **Now that I had a plan, it was time to create my gem layout with Bundler.**
 
@@ -191,13 +192,37 @@ Here is what I came up with:
 end```
 
 
+With this in place, I knew that the self.new_from_index_page(p) method would create a new instance of a podcast with scraped data taken from the scraper class. It would initialize and each podcast would be included in the @@all array.
+
+I also created a self.find(id) method so that one could search for podcasts by number
+
+# Scraper class
+
+Here is what I have for my Scraper class. Pretty straightforward. 
+
+**Get_page** method gets the podcast website we are scraping from using Nokogiri. 
+**Get_podcasts** method gets all of the data from the page.
+**make_podcasts** method iterates over the **get_podcasts method** and returns a podcast with data scraped from the Podcast.new_from_index_page(p) method.
 
 
+```class TopPodcasts::Scraper
+
+  def get_page
+    Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
+  end
+
+  def get_podcasts
+    self.get_page.css(".podcastRow")
+  end
+
+  def make_podcasts
+    self.get_podcasts.each do |p|
+    TopPodcasts::Podcast.new_from_index_page(p)
+    end
+  end
+end
+```
 
 
-
-
-
-
-
+Once all of this was in place. The program magically came to life.
 
