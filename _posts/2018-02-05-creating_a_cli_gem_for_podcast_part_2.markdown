@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Creating a CLI gem for podcast Part 2"
-date:       2018-02-05 21:15:04 +0000
+date:       2018-02-05 16:15:04 -0500
 permalink:  creating_a_cli_gem_for_podcast_part_2
 ---
 
