@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "Creating a CLI Gem about Podcasts"
+title:      "Creating a CLI Gem about Podcasts Part 1"
 date:       2018-02-05 15:07:31 -0500
 permalink:  creating_a_cli_gem_about_podcasts
 ---
