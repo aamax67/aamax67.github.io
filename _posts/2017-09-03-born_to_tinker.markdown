@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Born to tinker"
-date:   2017-09-03 04:00:46 +0000
+title:      "Born to tinker"
+date:       2017-09-03 00:00:46 -0400
+permalink:  born_to_tinker
 ---
 
 
